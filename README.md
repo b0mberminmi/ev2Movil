@@ -58,8 +58,6 @@ Abre la app en un emulador o dispositivo con Expo Go / development build según 
 ## Licencia
 Este proyecto es de uso académico y está estríctamente prohibido su uso para usos comerciales.
 
-## Licencia
-
 ## Autores
 Miembros del equipo y roles:
 - Luciano Lopresti: Desarollo.
