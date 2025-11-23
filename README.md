@@ -2,6 +2,10 @@
 
 Aplicación de lista de tareas (TODO) desarrollada con React Native + Expo y TypeScript. Proyecto creado como parte de la Evaluación 2 del curso de Desarrollo de Aplicaciones Móviles.
 
+## Enlace a la Demostración en Video
+
+[Enlace-Video] 
+
 ## Características
 
 - Gestión de tareas: crear, editar, completar y eliminar tareas.
@@ -63,6 +67,10 @@ Abre la app en un emulador o dispositivo con Expo Go / development build según 
 - `tsconfig.json` — Configuración de TypeScript.
 
 
+## Uso de IA
+
+Durante el desarrollo se utilizó GitHub Copilot como herramienta de apoyo para identificar y solucionar errores y proponer snippets de código. Las sugerencias de Copilot fueron revisadas y validadas manualmente por el equipo antes de incorporarlas al proyecto.
+
 ## Licencia
 Este proyecto es de uso académico y está estríctamente prohibido su uso para usos comerciales.
 
@@ -70,4 +78,4 @@ Este proyecto es de uso académico y está estríctamente prohibido su uso para 
 Miembros del equipo y roles:
 - Luciano Lopresti: Desarollo.
 - Sebastián Masferrer: Desarrollo.
-- Loretto Herrera: QA.
+- Loretto Herrera: Desarrollo.
