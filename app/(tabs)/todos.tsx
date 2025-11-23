@@ -26,6 +26,8 @@ export default function TodosScreen() {
   // Se conecta al hook con el email ingresado
   const {
     todos,
+    activeTodos,
+    completedTodos,
     isLoading,
     deleteTodo,
     toggleTodo,
@@ -50,7 +52,6 @@ export default function TodosScreen() {
   // Renderizado
   return (
     <View style={styles.container}>
-      {/* Encabezado simple con info del usuario */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Mis tareas</Text>
         {emailString ? (
@@ -72,7 +73,7 @@ export default function TodosScreen() {
         </View>
       ) : (
         <FlatList
-          data={todos}
+          data={activeTodos}
           keyExtractor={item => item.id}
           contentContainerStyle={styles.listContent}
           ItemSeparatorComponent={() => <View style={styles.separator} />}
@@ -83,6 +84,22 @@ export default function TodosScreen() {
               onDeleteRequest={handleDeleteRequest}
             />
           )}
+          ListFooterComponent={
+            completedTodos.length > 0 ? (
+              <View style={styles.completedSection}>
+                <Text style={styles.completedTitle}>Tareas completadas</Text>
+                {completedTodos.map(todo => (
+                  <View key={todo.id} style={styles.completedItemWrapper}>
+                    <TodoItem
+                      todo={todo}
+                      onToggleRequest={handleToggleRequest}
+                      onDeleteRequest={handleDeleteRequest}
+                    />
+                  </View>
+                ))}
+              </View>
+            ) : null
+          }
         />
       )}
 
@@ -156,6 +173,21 @@ const styles = StyleSheet.create({
   },
   separator: {
     height: 10,
+  },
+  completedSection: {
+    marginTop: 20,
+    borderTopWidth: 1,
+    borderTopColor: '#222',
+    paddingTop: 12,
+  },
+  completedTitle: {
+    color: NEON_GREEN,
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+  completedItemWrapper: {
+    marginBottom: 10,
   },
   fab: {
     position: 'absolute',
