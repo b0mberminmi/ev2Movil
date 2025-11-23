@@ -38,10 +38,18 @@ Nota: Estas credenciales están definidas en `constants/auth.ts` y se usan solo 
 
 ## Instalación y ejecución
 
-Instala dependencias
+1. Instala dependencias
+
+```powershell
 npm install
-Inicia la aplicación (abrirá el panel de Expo)
+```
+
+2. Inicia la aplicación (abrirá el panel de Expo)
+
+```powershell
 npx expo start
+```
+
 Abre la app en un emulador o dispositivo con Expo Go / development build según prefieras.
 
 ## Estructura principal del proyecto
