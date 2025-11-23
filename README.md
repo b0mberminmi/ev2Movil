@@ -1,10 +1,11 @@
 # Evaluación 2 - Desarrollo Móvil — TODO List
 
-Aplicación de lista de tareas (TODO) desarrollada con React Native + Expo y TypeScript. Proyecto creado como parte de la Evaluación 2 del curso de Desarrollo de Aplicaciones Móviles.
+Aplicación de lista de tareas (TODO) desarrollada con React Native + Expo y TypeScript. 
+Proyecto creado como parte de la Evaluación 2 del curso de Desarrollo de Aplicaciones Móviles.
 
 ## Enlace a la Demostración en Video
 
-[Enlace-Video] 
+[\[Enlace-Video\] ][shortVideo]
 
 ## Características
 
@@ -19,9 +20,9 @@ Aplicación de lista de tareas (TODO) desarrollada con React Native + Expo y Typ
 Usa estas cuentas para acceder a la aplicación durante pruebas:
 
 - Email: `demo@eva.com`  
-	Password: `S3guro!2024`
+	Password: `2025`
 - Email: `visitante@eva.com`  
-	Password: `Visit@123`
+	Password: `1234`
 
 Nota: Estas credenciales están definidas en `constants/auth.ts` y se usan solo como datos de ejemplo en la evaluación.
 
@@ -79,3 +80,6 @@ Miembros del equipo y roles:
 - Luciano Lopresti: Desarollo.
 - Sebastián Masferrer: Desarrollo.
 - Loretto Herrera: Desarrollo.
+
+
+[shortVideo]: https://www.youtube.com/shorts/TK9YhSo2UbY

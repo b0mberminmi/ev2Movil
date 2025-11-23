@@ -57,6 +57,11 @@ export default function TodosScreen() {
         {emailString ? (
           <Text style={styles.headerSubtitle}>{emailString}</Text>
         ) : null}
+        {activeTodos.length > 0 ? (
+          <Text style={styles.hintText}>
+            Selecciona una tarea para marcarla como completada.
+          </Text>
+        ) : null}
       </View>
 
       {isLoading ? (
@@ -204,5 +209,10 @@ const styles = StyleSheet.create({
     fontSize: 36,
     color: 'black',
     marginTop: -3,
+  },
+  hintText: {
+    color: '#AAAAAA',
+    fontSize: 13,
+    marginTop: 6,
   },
 });

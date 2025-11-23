@@ -74,11 +74,25 @@ const TodoForm: React.FC<TodoFormProps> = ({ onCreateTodo }) => {
       const hasPermission = await ensureCameraPermission();
       if (!hasPermission) return;
 
-      const result = await ImagePicker.launchCameraAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        allowsEditing: true,
+      // `expo-image-picker` v17+ recomienda `ImagePicker.MediaType`,
+      // pero algunas versiones pueden no exponer `MediaType` (y usan MediaTypeOptions).
+      // Usamos un fallback en tiempo de ejecución para evitar errores si la propiedad no existe.
+      const mediaTypesCandidate =
+        (ImagePicker as any).MediaType?.Images ??
+        (ImagePicker as any).MediaTypeOptions?.Images;
+
+      const launchOptions: any = {
+        allowsEditing: false,
         quality: 0.7,
-      });
+      };
+
+      // Solo incluir mediaTypes si el valor runtime es compatible (no un array de strings).
+      // Pasar un array de strings ('Images') provoca error de cast en Android.
+      if (mediaTypesCandidate !== undefined && !Array.isArray(mediaTypesCandidate)) {
+        launchOptions.mediaTypes = mediaTypesCandidate;
+      }
+
+      const result = await ImagePicker.launchCameraAsync(launchOptions);
 
       if (result.canceled) return;
 
@@ -127,9 +141,14 @@ const TodoForm: React.FC<TodoFormProps> = ({ onCreateTodo }) => {
         return;
       }
 
-      const location = await Location.getCurrentPositionAsync({
-        accuracy: Location.Accuracy.Balanced,
-      });
+      // Intentamos usar una posición conocida en caché primero (rápido). Si no hay, pedimos
+      // la posición actual con menor precisión para reducir el tiempo de espera.
+      let location = await Location.getLastKnownPositionAsync();
+      if (!location) {
+        location = await Location.getCurrentPositionAsync({
+          accuracy: Location.Accuracy.Low,
+        });
+      }
 
       await onCreateTodo(trimmedTitle, selectedImageUri, location.coords);
 

@@ -1,8 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const VALID_USERS = [
-  { email: 'demo@eva.com', password: 'S3guro!2024' },
-  { email: 'visitante@eva.com', password: 'Visit@123' },
+  { email: 'demo@eva.com', password: '2025' },
+  { email: 'visitante@eva.com', password: '1234' },
 ];
 
 const SIMULATED_DELAY_MS = 350;

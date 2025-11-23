@@ -1,5 +1,6 @@
 import { useLocalSearchParams } from 'expo-router';
-import React from 'react';
+import { useFocusEffect } from '@react-navigation/native';
+import React, { useCallback } from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import useTodos from '../../hooks/useTodos';
 
@@ -11,7 +12,14 @@ export default function ProfileScreen() {
   const { userEmail } = useLocalSearchParams<{ userEmail?: string }>();
   const emailString = userEmail ? String(userEmail) : '';
 
-  const { todos, isLoading } = useTodos(emailString);
+  const { todos, isLoading, reload } = useTodos(emailString);
+
+  // Recargar resumen cuando la pantalla entra en foco (por ejemplo, después de borrar desde Tareas)
+  useFocusEffect(
+    useCallback(() => {
+      reload();
+    }, [reload])
+  );
 
   const totalTodos = todos.length;
   const completedTodos = todos.filter(t => t.isCompleted).length;
